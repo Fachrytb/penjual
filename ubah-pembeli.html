@@ -13,11 +13,11 @@
 </head>
 
 <body class="m-4">
-  <h1>Ubah Data Pembeli</h1>
+  <h1>Ubah Data Penjual</h1>
 
   <form class="mb-3">
     <div class="mb-3">
-      <label class="form-label">Nama Pembeli</label>
+      <label class="form-label">Nama Penjual</label>
       <input type="text" class="form-control" id="input-nama">
     </div>
     <div class="mb-3">
@@ -31,27 +31,27 @@
     <button type="submit" class="btn btn-primary" id="tombol-ubah">Ubah</button>
   </form>
 
-  <a href="index.html" class="mt-1">Lihat Daftar Pembeli</a>
+  <a href="index.html" class="mt-1">Lihat Daftar Penjual</a>
 
   <script type="module">
-    import { ambilPembeli, ubahPembeli } from './main.js';
+    import { ambilPenjual, ubahPenjual } from './main.js';
 
     let tombolUbah = document.getElementById('tombol-ubah');
-    let elemenNamaPembeli = document.getElementById('input-nama');
+    let elemenNamaPenjual = document.getElementById('input-nama');
      let elemenAlamat = document.getElementById('input-alamat');
      let elemenNohp = document.getElementById('input-tlpn');
     const queryString = window.location.search;
     const parameterURL = new URLSearchParams(queryString);
     const docId = parameterURL.get('docId');
-    const pembeli = await ambilPembeli(docId);
+    const Penjual = await ambilPenjual(docId);
     
-    elemenNamaPembeli.value = pembeli.nama;
-      elemenAlamat.value = pembeli.alamat;
-      elemenNohp.value = pembeli.nohp;
+    elemenNamaPenjual.value = Penjual.nama;
+      elemenAlamat.value = Penjual.alamat;
+      elemenNohp.value = Penjual.nohp;
 
     tombolUbah.addEventListener('click', async function(el) {
       el.preventDefault();
-      await ubahPembeli(docId, elemenNamaPembeli.value, elemenAlamat.value, elemenNohp.value);
+      await ubahPenjual(docId, elemenNamaPenjual.value, elemenAlamat.value, elemenNohp.value);
       window.location.href = 'index.html';
     });
   </script>
